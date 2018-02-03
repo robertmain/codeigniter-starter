@@ -1,0 +1,11 @@
+{
+    "name": "robert/codeigniter-starter",
+    "authors": [
+        {
+            "name": "Robert Main"
+        }
+    ],
+    "require": {
+        "codeigniter/framework": "^3.1"
+    }
+}
