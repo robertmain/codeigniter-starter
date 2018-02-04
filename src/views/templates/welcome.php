@@ -7,7 +7,7 @@
 <code><?php echo __FILE__; ?></code>
 
 <p>The corresponding controller for this page is found at:</p>
-<code>app\controllers\Welcome.php</code>
+<code>src\controllers\Welcome.php</code>
 
 <p>
     If you are exploring CodeIgniter for the very first time,

@@ -121,7 +121,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = PROJECT_ROOT . 'app';
+	$application_folder = PROJECT_ROOT . 'src';
 
 /*
  *---------------------------------------------------------------
