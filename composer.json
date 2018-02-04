@@ -5,8 +5,12 @@
             "name": "Robert Main"
         }
     ],
+    "scripts": {
+        "post-install-cmd": "cp .env.example .env"
+    },
     "require": {
         "codeigniter/framework": "^3.1",
-        "league/plates": "^3.3"
+        "league/plates": "^3.3",
+        "vlucas/phpdotenv": "^2.4"
     }
 }

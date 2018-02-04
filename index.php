@@ -6,6 +6,9 @@ define('VENDOR_PATH', PROJECT_ROOT . 'vendor' . DIRECTORY_SEPARATOR);
 
 require_once VENDOR_PATH . 'autoload.php';
 
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
 /**
  * CodeIgniter
  *
