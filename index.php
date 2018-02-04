@@ -1,8 +1,10 @@
 <?php
 
-define('VENDOR_PATH', './vendor' . DIRECTORY_SEPARATOR);
+define('PROJECT_ROOT', '.' . DIRECTORY_SEPARATOR);
 
-require_once(VENDOR_PATH . 'autoload.php');
+define('VENDOR_PATH', PROJECT_ROOT . 'vendor' . DIRECTORY_SEPARATOR);
+
+require_once VENDOR_PATH . 'autoload.php';
 
 /**
  * CodeIgniter
@@ -119,7 +121,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'app';
+	$application_folder = PROJECT_ROOT . 'app';
 
 /*
  *---------------------------------------------------------------
