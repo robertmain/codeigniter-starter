@@ -4,6 +4,6 @@ class Welcome extends MY_Controller
 {
     public function index()
     {
-        echo $this->templates->render('profile', ['name' => 'Peter']);
+        $this->render('profile', ['name' => 'Peter']);
     }
 }
