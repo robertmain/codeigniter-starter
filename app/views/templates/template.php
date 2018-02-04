@@ -55,13 +55,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         border-top: 1px solid #D0D0D0;
         line-height: 32px;
         padding: 0 10px 0 10px;
-        margin: 20px 0 0 0;
+        margin: 20px auto 0 auto;
+        width: 920px;
     }
 
     #container {
         margin: 10px;
         border: 1px solid #D0D0D0;
         box-shadow: 0 0 8px #D0D0D0;
+        margin: 0 auto;
+        width: 920px;
     }
     </style>
 </head>
