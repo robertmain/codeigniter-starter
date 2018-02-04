@@ -31,3 +31,12 @@ abstract class MY_Controller extends CI_Controller
         }
     }
 }
+
+/**
+ * Syntax Sugar Controller
+ *
+ * This controller simply exists to provide some syntax sugar around inheritence so that classes
+ * may extend "Controller" rather than "MY_Controller"
+ */
+abstract class Controller extends MY_Controller
+{}
