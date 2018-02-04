@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Rewrite everything that comes into this folder to be a segment on the end of index.php
+# unless it's already a request for index.php - in which case, don't rewrite it...
+RewriteCond $1      !^(index\.php)
+RewriteRule ^(.*)$  index.php/$1   [L]
