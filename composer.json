@@ -6,7 +6,8 @@
         }
     ],
     "scripts": {
-        "post-install-cmd": "cp .env.example .env"
+        "post-install-cmd": "cp .env.example .env",
+        "migrate:latest": "php index.php cli/migrate latest"
     },
     "require": {
         "codeigniter/framework": "^3.1",
