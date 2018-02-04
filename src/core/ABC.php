@@ -1,8 +1,16 @@
 <?php
 
+namespace Core;
+
 use League\Plates\Engine;
 
-abstract class MY_Controller extends CI_Controller
+/**
+ * Abstract Base Controller
+ *
+ * Abstract controller that all application controllers should inherit from in order to benefit from utilities such
+ * as pre-configured templating etc.
+ */
+abstract class ABC extends \CI_Controller
 {
     public function __construct()
     {
@@ -31,12 +39,3 @@ abstract class MY_Controller extends CI_Controller
         }
     }
 }
-
-/**
- * Syntax Sugar Controller
- *
- * This controller simply exists to provide some syntax sugar around inheritence so that classes
- * may extend "Controller" rather than "MY_Controller"
- */
-abstract class Controller extends MY_Controller
-{}

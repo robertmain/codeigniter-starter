@@ -1,6 +1,8 @@
 <?php
 
-class Welcome extends Controller
+use Core\ABC;
+
+class Welcome extends ABC
 {
     public function index()
     {
