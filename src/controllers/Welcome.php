@@ -7,6 +7,6 @@ class Welcome extends ABC
     public function index()
     {
         $name = $this->input->get('name');
-        $this->render('welcome', ['name' => ($name) ? $name : 'Peter']);
+        $this->render('partials::welcome', ['name' => ($name) ? $name : 'Peter']);
     }
 }
