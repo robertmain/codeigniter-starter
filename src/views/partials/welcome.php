@@ -1,4 +1,4 @@
-<?php $this->layout('template', ['title' => 'Welcome to CodeIgniter, ' . $this->e($name)]) ?>
+<?php $this->layout('layouts::default', ['title' => 'Welcome to CodeIgniter, ' . $this->e($name)]) ?>
 
 
 <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>

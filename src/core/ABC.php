@@ -15,7 +15,10 @@ abstract class ABC extends \CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->templates = new Engine(VIEWPATH . 'templates');
+        $this->templates = new Engine(VIEWPATH);
+
+        $this->templates->addFolder('layouts', VIEWPATH . 'layouts');
+        $this->templates->addFolder('partials', VIEWPATH . 'partials');
     }
 
     /**
