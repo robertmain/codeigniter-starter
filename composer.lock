@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9d462d815b444efd9d2a3e33b058b6cc",
-    "content-hash": "993d9822a90f83a403021e3d9cb08484",
+    "hash": "881c4a537621b7cbdea1960f461e629c",
+    "content-hash": "8f1f1074666524e0a25d275f79fce146",
     "packages": [
         {
             "name": "codeigniter/framework",
@@ -39,6 +39,51 @@
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
             "time": "2018-01-13 11:57:11"
+        },
+        {
+            "name": "jamierumbelow/codeigniter-base-model",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jamierumbelow/codeigniter-base-model.git",
+                "reference": "aca1c2361040c05deeab1044b32e2a97508ccd1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jamierumbelow/codeigniter-base-model/zipball/aca1c2361040c05deeab1044b32e2a97508ccd1b",
+                "reference": "aca1c2361040c05deeab1044b32e2a97508ccd1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "core/MY_Model.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jamie Rumbelow",
+                    "email": "jamie@jamierumbelow.net",
+                    "homepage": "http://jamierumbelow.net"
+                }
+            ],
+            "description": "CodeIgniter base CRUD model to remove repetition and increase productivity",
+            "homepage": "https://github.com/jamierumbelow/codeigniter-base-model",
+            "keywords": [
+                "base",
+                "codeigniter",
+                "crud",
+                "model",
+                "scaffold"
+            ],
+            "time": "2012-05-22 22:53:33"
         },
         {
             "name": "league/plates",

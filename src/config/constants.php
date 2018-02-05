@@ -84,3 +84,14 @@ defined('EXIT_USER_INPUT') or define('EXIT_USER_INPUT', 7);         // Invalid u
 defined('EXIT_DATABASE') or define('EXIT_DATABASE', 8);             // Database error
 defined('EXIT__AUTO_MIN') or define('EXIT__AUTO_MIN', 9);           // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX') or define('EXIT__AUTO_MAX', 125);         // Highest automatically-assigned error code
+
+/*
+|--------------------------------------------------------------------------
+| Date/Time Formats
+|--------------------------------------------------------------------------
+|
+| These are constants that can be passed to PHP's DateTime class to denote
+| date/time formatting
+|
+*/
+define('MYSQL_DATETIME', 'Y-m-d H:i:s');   // 2018-02-05 00:36:15
