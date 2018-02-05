@@ -52,4 +52,25 @@ abstract class ABM extends MY_Model
         return $row;
     }
 
+    /**
+     * Delete a row from the datbase by primary key
+     *
+     * @param int  $id   The ID of the row to delete
+     * @param bool $soft Enable/Disable soft delete(enabled by default)
+    */
+    public function delete($id, $soft = true)
+    {
+        if ($soft) {
+            $data = $this->_run_before_callbacks('delete', [$id]);
+
+            $result = (bool)$this->save(['deleted' => true], $id);
+
+            $this->_run_after_callbacks('delete', [$id, $result]);
+
+            return (bool)$result;
+        } else {
+            return parent::delete($id);
+        }
+    }
+
 }

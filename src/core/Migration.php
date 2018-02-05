@@ -15,6 +15,12 @@ abstract class Migration extends CI_Migration{
      * @var Array Record metadata that can be easily added to any migration
     */
     protected $metaData = [
+        'deleted' => [
+            'type'       => 'INT',
+            'constraint' => '1',
+            'default'    => 0,
+            'null'       => false
+        ],
         'created_at' => [
             'type' => 'DATETIME'
         ],
