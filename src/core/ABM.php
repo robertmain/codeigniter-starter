@@ -12,6 +12,19 @@ use \MY_Model;
  */
 abstract class ABM extends MY_Model
 {
+    /**
+     * @var string The name for the field used to store record creation timestamp
+     */
+    const CREATED = 'created_at';
+
+    /**
+     * @var string The name for the field used to store record update timestamp
+    */
+    const UPDATED = 'updated_at';
+
+    /**
+     * @var string Model lifecycle callbacks used to add or agument the existing behaviour of models in CodeIgniter
+     */
     protected $after_get = ['date_objects'];
 
     /**
@@ -27,13 +40,13 @@ abstract class ABM extends MY_Model
     {
         $date = new \DateTime();
 
-        $data['updated_at'] = $date->format(MYSQL_DATETIME);
+        $data[self::UPDATED] = $date->format(MYSQL_DATETIME);
 
         if ($id) {
             $this->update($id, $data);
             return $id;
         } else {
-            $data['created_at'] = $date->format(MYSQL_DATETIME);
+            $data[self::CREATED] = $date->format(MYSQL_DATETIME);
             return $this->insert($data);
         }
     }
@@ -46,8 +59,8 @@ abstract class ABM extends MY_Model
     */
     protected function date_objects($row)
     {
-        $row->created_at = \DateTime::createFromFormat(MYSQL_DATETIME, $row->created_at);
-        $row->updated_at = \DateTime::createFromFormat(MYSQL_DATETIME, $row->updated_at);
+        $row->{self::CREATED} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{self::CREATED});
+        $row->{self::UPDATED} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{self::UPDATED});
 
         return $row;
     }
