@@ -23,6 +23,11 @@ abstract class ABM extends MY_Model
     const UPDATED = 'updated_at';
 
     /**
+     * @var string The name for the field used to store record deletion timestamp
+     */
+    const DELETED = 'deleted_at';
+
+    /**
      * @var string Model lifecycle callbacks used to add or agument the existing behaviour of models in CodeIgniter
      */
     protected $after_get = ['date_objects'];
@@ -52,15 +57,16 @@ abstract class ABM extends MY_Model
     }
 
     /**
-     * Expand MySQL DateTime updated/created at fields into php DateTime objects
+     * Expand MySQL DateTime created/updated/deleted fields into {@link \DateTime} objects
      *
      * @param object $row Database row
      * @param object $row Database row
     */
     protected function date_objects($row)
     {
-        $row->{self::CREATED} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{self::CREATED});
-        $row->{self::UPDATED} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{self::UPDATED});
+        foreach ([static::CREATED, static::UPDATED, static::DELETED] as $field) {
+            $row->{$field} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{$field});
+        }
 
         return $row;
     }
@@ -76,14 +82,15 @@ abstract class ABM extends MY_Model
         if ($soft) {
             $data = $this->_run_before_callbacks('delete', [$id]);
 
-            $result = (bool)$this->save(['deleted' => true], $id);
+            $result = (bool)$this->save([static::DELETED => date(MYSQL_DATETIME)], $id);
 
             $this->_run_after_callbacks('delete', [$id, $result]);
 
-            return (bool)$result;
+            return $result;
         } else {
             return parent::delete($id);
         }
     }
+
 
 }

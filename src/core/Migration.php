@@ -21,17 +21,15 @@ abstract class Migration extends CI_Migration
    */
    const UPDATED = 'updated_at';
 
+   /**
+    * @var string The name for the field used to store record update timestamp
+   */
+    const DELETED = 'deleted_at';
+
     /**
      * @var Array Record metadata that can be easily added to any migration
     */
-    protected $metaData = [
-        'deleted' => [
-            'type'       => 'INT',
-            'constraint' => '1',
-            'default'    => 0,
-            'null'       => false
-        ]
-    ];
+    protected $metaData = [];
 
     /**
      * Actions required to perform the migration
@@ -46,16 +44,23 @@ abstract class Migration extends CI_Migration
     /**
      * Define the datetime metadata fields for inheritance in child migrations
     */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
-        parent::__construct();
+        parent::__construct($config);
 
-        $this->metaData[self::CREATED] = [
-            'type' => 'DATETIME'
-        ];
-
-        $this->metaData[self::UPDATED] = [
-            'type' => 'DATETIME'
+        $this->metaData = [
+            self::CREATED => [
+                'type' => 'DATETIME',
+                'null' => false
+            ],
+            self::UPDATED => [
+                'type' => 'DATETIME',
+                'null' => false
+            ],
+            self::DELETED => [
+                'type' => 'DATETIME',
+                'null' => true
+            ]
         ];
     }
 }
