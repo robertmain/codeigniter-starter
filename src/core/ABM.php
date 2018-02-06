@@ -172,11 +172,22 @@ abstract class ABM extends CI_Model
      * Retrieve a single record based on an arbitary key=>value WHERE clause
      *
      * @param array $where Description
+     *
+     * @return array<object> An array of objects representing each record in the database
     */
     public function get_by($where)
     {
         return $this->db->where($where)
                         ->get($this->table)
                         ->row();
+    }
+
+    /**
+     * Retrieve all records for a particular model
+    */
+    public function get_all()
+    {
+        return $this->db->get($this->table)
+                        ->result();
     }
 }
