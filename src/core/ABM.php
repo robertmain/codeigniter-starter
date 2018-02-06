@@ -55,27 +55,31 @@ abstract class ABM extends CI_Model
     }
 
     /**
-     * Saves (or creates) a single record if it doesn't already exist. If the `$id1 parameter is provided, the record
-     * is presumed not to exist and is created. The newly created ID is then returned.
+     * Update a single record in the database
      *
-     * @param array $data The data to persist to the database
-     * @param int   $id   The record ID to edit (if omitted, create is assumed)
+     * @param mixed $primary_value The primary key value of the record to update
+     * @param array $data          An ascociative array of update values
      *
-     * @return int The primary key of the record that was updated/deleted
-    */
-    public function save($data, $id = null)
+     * @return boolean Indication of the success of the update
+     */
+    private function update($primary_value, $data)
     {
-        $date = new \DateTime();
+        return $this->db->where(static::PRIMARY_KEY, $primary_value)
+                        ->update($this->table, $data);
+    }
 
-        $data[static::UPDATED] = $date->format(MYSQL_DATETIME);
+    /**
+     * Insert a single record into the database
+     *
+     * @param array $data An ascociative array of data to insert into the database
+     *
+     * @return int The primary key ID of the newly created record
+    */
+    private function insert($data)
+    {
+        $this->db->insert($data);
 
-        if ($id) {
-            $this->update($id, $data);
-            return $id;
-        } else {
-            $data[static::CREATED] = $date->format(MYSQL_DATETIME);
-            return $this->insert($data);
-        }
+        return $this->db->insert_id();
     }
 
     /**
@@ -94,25 +98,43 @@ abstract class ABM extends CI_Model
     }
 
     /**
-     * Delete a row from the datbase by primary key
+     * Saves (or creates) a single record if it doesn't already exist. If the `$id1 parameter is provided, the record
+     * is presumed not to exist and is created. The newly created ID is then returned.
      *
-     * @param int  $id   The ID of the row to delete
-     * @param bool $soft Enable/Disable soft delete(enabled by default)
+     * @param array $data The data to persist to the database
+     * @param int   $id   The record ID to edit (if omitted, create is assumed)
+     *
+     * @return int The primary key of the record that was updated/deleted
     */
-    public function delete($id, $soft = true)
+    public function save($data, $id = null)
     {
-        if ($soft) {
-            $data = $this->_run_before_callbacks('delete', [$id]);
+        $date = new \DateTime();
 
-            $result = (bool)$this->save([static::DELETED => date(MYSQL_DATETIME)], $id);
+        $data[static::UPDATED] = $date->format(MYSQL_DATETIME);
 
-            $this->_run_after_callbacks('delete', [$id, $result]);
-
-            return $result;
+        if ($id) {
+            $success = $this->update($id, $data);
+            if($success) {
+                return $id;
+            }
         } else {
-            return parent::delete($id);
+            $data[static::CREATED] = $date->format(MYSQL_DATETIME);
+            return $this->insert($data);
         }
     }
 
-
+    /**
+     * Delete a row from the datbase by primary key
+     *
+     * @param int  $primary_value The ID of the row to delete
+     * @param bool $soft          Soft delete(enabled by default)
+    */
+    public function delete($primary_value, $soft = true)
+    {
+        if ($soft) {
+            return (bool)$this->save([static::DELETED => date(MYSQL_DATETIME)], $id);
+        } else {
+            return $this->db->delete($this->table, [static::PRIMARY_KEY => $primary_value]);
+        }
+    }
 }
