@@ -45,13 +45,13 @@ abstract class ABM extends MY_Model
     {
         $date = new \DateTime();
 
-        $data[self::UPDATED] = $date->format(MYSQL_DATETIME);
+        $data[static::UPDATED] = $date->format(MYSQL_DATETIME);
 
         if ($id) {
             $this->update($id, $data);
             return $id;
         } else {
-            $data[self::CREATED] = $date->format(MYSQL_DATETIME);
+            $data[static::CREATED] = $date->format(MYSQL_DATETIME);
             return $this->insert($data);
         }
     }
