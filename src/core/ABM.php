@@ -62,7 +62,7 @@ abstract class ABM extends CI_Model
      *
      * @return boolean Indication of the success of the update
      */
-    private function update($primary_value, $data)
+    private function update($primary_value, $data) : boolean
     {
         return $this->db->where(static::PRIMARY_KEY, $primary_value)
                         ->update($this->table, $data);
@@ -75,7 +75,7 @@ abstract class ABM extends CI_Model
      *
      * @return int The primary key value of the newly created record
     */
-    private function insert($data)
+    private function insert($data) : int
     {
         $this->db->insert($data);
 
@@ -88,7 +88,7 @@ abstract class ABM extends CI_Model
      * @param object $row Database row
      * @param object $row Database row
     */
-    protected function date_objects($row)
+    protected function date_objects($row) : object
     {
         foreach ([static::CREATED, static::UPDATED, static::DELETED] as $field) {
             $row->{$field} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{$field});
@@ -106,7 +106,7 @@ abstract class ABM extends CI_Model
      *
      * @return int The primary key of the record that was updated/deleted
     */
-    public function save($data, $id = null)
+    public function save($data, $id = null) : ?int
     {
         $date = new \DateTime();
 
@@ -131,7 +131,7 @@ abstract class ABM extends CI_Model
      * @param int  $primary_value The primary key value of the row to delete
      * @param bool $soft          Soft delete(enabled by default)
     */
-    public function delete($primary_value, $soft = true)
+    public function delete($primary_value, $soft = true) : boolean
     {
         if ($soft) {
             return (bool)$this->save([static::DELETED => date(MYSQL_DATETIME)], $id);
@@ -145,7 +145,7 @@ abstract class ABM extends CI_Model
      *
      * @param int $primary_value The primary key value of the record to retrieve
     */
-    public function get($primary_value)
+    public function get($primary_value) : ?object
     {
         return $this->get_by([static::PRIMARY_KEY => $primary_value]);
     }
