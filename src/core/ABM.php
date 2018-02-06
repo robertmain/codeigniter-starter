@@ -83,24 +83,6 @@ abstract class ABM extends CI_Model
     }
 
     /**
-     * Set WHERE parameters, cleverly
-     *
-     * @param array $params An array of where clause parameters to be applied to the query
-     * @return void
-     */
-    private function set_where($params)
-    {
-        if (count($params) == 1)
-        {
-            $this->db->where($params[0]);
-        }
-        else
-        {
-            $this->db->where($params[0], $params[1]);
-        }
-    }
-
-    /**
      * Expand MySQL DateTime created/updated/deleted fields into {@link \DateTime} objects
      *
      * @param object $row Database row
@@ -180,6 +162,19 @@ abstract class ABM extends CI_Model
         return $this->db->where($where)
                         ->get($this->table)
                         ->row();
+    }
+
+    /**
+     * Retrieve many records by an arbitary WHERE clause
+     *
+     * @param array $where An asociative array containing the WHERE clause to retrieve records by
+     *
+     * @return array<object> An array of objects representing records in the database
+    */
+    public function get_many_by($where)
+    {
+        $this->db->where($where);
+        return $this->get_all();
     }
 
     /**
