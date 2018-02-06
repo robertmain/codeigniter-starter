@@ -73,7 +73,7 @@ abstract class ABM extends CI_Model
      *
      * @param array $data An ascociative array of data to insert into the database
      *
-     * @return int The primary key ID of the newly created record
+     * @return int The primary key value of the newly created record
     */
     private function insert($data)
     {
@@ -102,7 +102,7 @@ abstract class ABM extends CI_Model
      * is presumed not to exist and is created. The newly created ID is then returned.
      *
      * @param array $data The data to persist to the database
-     * @param int   $id   The record ID to edit (if omitted, create is assumed)
+     * @param int   $id   The primary key value of the record to edit (if omitted, create is assumed)
      *
      * @return int The primary key of the record that was updated/deleted
     */
@@ -116,6 +116,8 @@ abstract class ABM extends CI_Model
             $success = $this->update($id, $data);
             if($success) {
                 return $id;
+            } else {
+                return false;
             }
         } else {
             $data[static::CREATED] = $date->format(MYSQL_DATETIME);
@@ -126,7 +128,7 @@ abstract class ABM extends CI_Model
     /**
      * Delete a row from the datbase by primary key
      *
-     * @param int  $primary_value The ID of the row to delete
+     * @param int  $primary_value The primary key value of the row to delete
      * @param bool $soft          Soft delete(enabled by default)
     */
     public function delete($primary_value, $soft = true)
@@ -137,4 +139,17 @@ abstract class ABM extends CI_Model
             return $this->db->delete($this->table, [static::PRIMARY_KEY => $primary_value]);
         }
     }
+
+    /**
+     * Retrieve a single record from the database
+     *
+     * @param int $primary_value The primary key value of the record to retrieve
+    */
+    public function get($primary_value)
+    {
+        return $this->db->where(static::PRIMARY_KEY, $primary_value)
+                        ->get($this->table)
+                        ->row();
+    }
+
 }
