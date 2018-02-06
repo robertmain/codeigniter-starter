@@ -4,7 +4,7 @@ use Core\ABM;
 
 class User extends ABM
 {
-    public function save($data, $id = null)
+    public function save($data, $id = null) : ?int
     {
         if (array_key_exists('password', $data) && strlen($data['password']) > 0) {
             $data['password'] = self::password_hash($data['password']);
