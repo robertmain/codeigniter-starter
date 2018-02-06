@@ -37,9 +37,16 @@ abstract class ABM extends CI_Model
     protected $table = null;
 
     /**
-     * @var string Model lifecycle callbacks used to add or agument the existing behaviour of models in CodeIgniter
+     * @var array<string> Meethods to run at various points during the model's lifecycle
      */
-    protected $after_get = ['date_objects'];
+    protected $before_create = [];
+    protected $after_create  = [];
+    protected $before_update = [];
+    protected $after_update  = [];
+    protected $before_get    = [];
+    protected $after_get     = ['date_objects'];
+    protected $before_delete = [];
+    protected $after_delete  = [];
 
     /**
      * Dynamically set the model's database table name (though, this can be overridden..)
@@ -64,8 +71,14 @@ abstract class ABM extends CI_Model
      */
     private function update($primary_value, $data) : boolean
     {
-        return $this->db->where(static::PRIMARY_KEY, $primary_value)
-                        ->update($this->table, $data);
+        $data = $this->run_before_callbacks('update', [$data, $primary_value]);
+
+        $result = $this->db->where(static::PRIMARY_KEY, $primary_value)
+                           ->update($this->table, $data);
+
+        $this->_run_after_callbacks('update', [$data, $primary_value, $result]);
+
+        return $result;
     }
 
     /**
@@ -77,9 +90,62 @@ abstract class ABM extends CI_Model
     */
     private function insert($data) : int
     {
-        $this->db->insert($data);
+        $data = $this->_run_before_callbacks('create', [$data]);
 
-        return $this->db->insert_id();
+        $this->db->insert($this->table, $data);
+        $insert_id = $this->db->insert_id();
+
+        $this->_run_after_callbacks('create', [$data, $insert_id]);
+
+        return $insert_id;
+    }
+
+    /**
+     * Run the before_ callbacks, each callback taking a $data variable and returning it
+     *
+     * @param string        $type   The type of callback to be run (can be create, update, get or delete)
+     * @param array<string> $params Array of parameters to be passed to the callback
+     *
+     * @return mixed
+     */
+    private function run_before_callbacks($type, $params = [])
+    {
+        $name = 'before_' . $type;
+        $data = (isset($params[0])) ? $params[0] : false;
+
+        if (!empty($this->$name))
+        {
+            foreach ($this->$name as $method)
+            {
+                $data += call_user_func_array(array($this, $method), $params);
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Run the after_ callbacks, each callback taking a $data variable and returning it
+     *
+     * @param string        $type   The type of callback to be run (can be create, update, get or delete)
+     * @param array<string> $params Array of parameters to be passed to the callback
+     *
+     * @return mixed
+     */
+    private function run_after_callbacks($type, $params = [])
+    {
+        $name = 'after_' . $type;
+        $data = (isset($params[0])) ? $params[0] : false;
+
+        if (!empty($this->$name))
+        {
+            foreach ($this->$name as $method)
+            {
+                $data = call_user_func_array(array($this, $method), $params);
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -88,10 +154,12 @@ abstract class ABM extends CI_Model
      * @param object $row Database row
      * @param object $row Database row
     */
-    protected function date_objects($row) : object
+    protected function date_objects($row)
     {
         foreach ([static::CREATED, static::UPDATED, static::DELETED] as $field) {
-            $row->{$field} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{$field});
+            if (isset($row->{$field})) {
+                $row->{$field} = \DateTime::createFromFormat(MYSQL_DATETIME, $row->{$field});
+            }
         }
 
         return $row;
@@ -133,11 +201,18 @@ abstract class ABM extends CI_Model
     */
     public function delete($primary_value, $soft = true) : boolean
     {
+        $this->run_before_callbacks('delete', [$primary_value]);
+
         if ($soft) {
-            return (bool)$this->save([static::DELETED => date(MYSQL_DATETIME)], $id);
+            $result = $this->db->where([static::PRIMARY_KEY => $primary_value])
+                               ->update($this->table, [static::DELETED => date(MYSQL_DATETIME)]);
         } else {
-            return $this->db->delete($this->table, [static::PRIMARY_KEY => $primary_value]);
+            $result = $this->db->delete($this->table, [static::PRIMARY_KEY => $primary_value]);
         }
+
+        $this->run_after_callbacks('delete', [$primary_value, $result]);
+
+        return $result;
     }
 
     /**
@@ -146,7 +221,7 @@ abstract class ABM extends CI_Model
      * @param int  $primary_value   The primary key value of the record to retrieve
      * @param bool $include_deleted Include deleted records in the result set (defaults to false)
     */
-    public function get($primary_value, $include_deleted = false) : ?object
+    public function get($primary_value, $include_deleted = false)
     {
         return $this->get_by([static::PRIMARY_KEY => $primary_value], $include_deleted);
     }
@@ -159,15 +234,19 @@ abstract class ABM extends CI_Model
      *
      * @return object|null The object matching the specified query(if any)
     */
-    public function get_by($where, $include_deleted = false) : ?object
+    public function get_by($where, $include_deleted = false)
     {
+        $this->run_before_callbacks('get');
+
         if (!$include_deleted) {
             $this->db->where([static::DELETED => null]);
         }
 
-        return $this->db->where($where)
+        $row = $this->db->where($where)
                         ->get($this->table)
                         ->row();
+
+        return $this->run_after_callbacks('get', [$row]);
     }
 
     /**
@@ -193,11 +272,17 @@ abstract class ABM extends CI_Model
      */
     public function get_all($include_deleted = false) : array
     {
+        $this->run_before_callbacks('get');
+
         if (!$include_deleted) {
             $this->db->where([static::DELETED => null]);
         }
 
-        return $this->db->get($this->table)
-                        ->result();
+        $result = $this->db->get($this->table)
+                           ->result();
+
+        return array_map(function ($row) {
+            return $this->run_after_callbacks('get', [$row]);
+        }, $result);
     }
 }
