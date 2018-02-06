@@ -153,11 +153,12 @@ abstract class ABM extends CI_Model
     /**
      * Retrieve a single record based on an arbitary key=>value WHERE clause
      *
-     * @param array $where Description
+     * @param array $where           An arbitary WHERE clause determining which records to return
+     * @param bool  $include_deleted Include deleted records in the result set (defaults to false)
      *
-     * @return array<object> An array of objects representing each record in the database
+     * @return object|null The object matching the specified query(if any)
     */
-    public function get_by($where)
+    public function get_by($where, $include_deleted = false) : ?object
     {
         return $this->db->where($where)
                         ->get($this->table)
@@ -167,9 +168,10 @@ abstract class ABM extends CI_Model
     /**
      * Retrieve many records by an arbitary WHERE clause
      *
-     * @param array $where An asociative array containing the WHERE clause to retrieve records by
+     * @param array $where           An asociative array containing the WHERE clause to retrieve records by
+     * @param bool  $include_deleted Include deleted records in the result set (defaults to false)
      *
-     * @return array<object> An array of objects representing records in the database
+     * @return array<object> An array of objects matching the query
     */
     public function get_many_by($where)
     {
