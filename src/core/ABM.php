@@ -44,7 +44,7 @@ abstract class ABM extends CI_Model
     protected $before_update = [];
     protected $after_update  = [];
     protected $before_get    = [];
-    protected $after_get     = ['date_objects'];
+    protected $after_get     = ['format_record_metadata'];
     protected $before_delete = [];
     protected $after_delete  = [];
 
@@ -154,7 +154,7 @@ abstract class ABM extends CI_Model
      * @param object $row Database row
      * @param object $row Database row
     */
-    protected function date_objects($row)
+    protected function format_record_metadata($row)
     {
         foreach ([static::CREATED, static::UPDATED, static::DELETED] as $field) {
             if (isset($row->{$field})) {
