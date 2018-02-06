@@ -2,7 +2,7 @@
 
 use Core\ABM;
 
-class User_model extends ABM
+class User extends ABM
 {
     public function save($data, $id = null)
     {

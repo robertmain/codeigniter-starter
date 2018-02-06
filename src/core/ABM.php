@@ -2,16 +2,20 @@
 
 namespace Core;
 
-use \MY_Model;
+use \CI_Model;
 
 /**
  * Abstract Base Model
  *
- * Abstract database model. Extends Jamie Rumbelow's base model and adds additional functionality such as
- * created/updated timestamps, etc.
+ * Abstract database model. Adds additional functionality such as created/updated/deleted timestamps, etc.
  */
-abstract class ABM extends MY_Model
+abstract class ABM extends CI_Model
 {
+    /**
+     * @var string Table primary key column
+     */
+    const PRIMARY_KEY = 'id';
+
     /**
      * @var string The name for the field used to store record creation timestamp
      */
@@ -28,9 +32,27 @@ abstract class ABM extends MY_Model
     const DELETED = 'deleted_at';
 
     /**
+     * @var string The name of the table data for this model is stored in
+     */
+    protected $table = null;
+
+    /**
      * @var string Model lifecycle callbacks used to add or agument the existing behaviour of models in CodeIgniter
      */
     protected $after_get = ['date_objects'];
+
+    /**
+     * Dynamically set the model's database table name (though, this can be overridden..)
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(['inflector']);
+
+        if ($this->table === null) {
+            $this->table = strtolower(plural(get_class($this)));
+        }
+    }
 
     /**
      * Saves (or creates) a single record if it doesn't already exist. If the `$id1 parameter is provided, the record
