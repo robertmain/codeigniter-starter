@@ -49,15 +49,15 @@ abstract class Migration extends CI_Migration
         parent::__construct($config);
 
         $this->metaData = [
-            self::CREATED => [
+            static::CREATED => [
                 'type' => 'DATETIME',
                 'null' => false
             ],
-            self::UPDATED => [
+            static::UPDATED => [
                 'type' => 'DATETIME',
                 'null' => false
             ],
-            self::DELETED => [
+            static::DELETED => [
                 'type' => 'DATETIME',
                 'null' => true
             ]
