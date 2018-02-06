@@ -143,11 +143,12 @@ abstract class ABM extends CI_Model
     /**
      * Retrieve a single record from the database
      *
-     * @param int $primary_value The primary key value of the record to retrieve
+     * @param int  $primary_value   The primary key value of the record to retrieve
+     * @param bool $include_deleted Include deleted records in the result set (defaults to false)
     */
-    public function get($primary_value) : ?object
+    public function get($primary_value, $include_deleted = false) : ?object
     {
-        return $this->get_by([static::PRIMARY_KEY => $primary_value]);
+        return $this->get_by([static::PRIMARY_KEY => $primary_value], $include_deleted);
     }
 
     /**
@@ -160,6 +161,10 @@ abstract class ABM extends CI_Model
     */
     public function get_by($where, $include_deleted = false) : ?object
     {
+        if (!$include_deleted) {
+            $this->db->where([static::DELETED => null]);
+        }
+
         return $this->db->where($where)
                         ->get($this->table)
                         ->row();
@@ -173,17 +178,25 @@ abstract class ABM extends CI_Model
      *
      * @return array<object> An array of objects matching the query
     */
-    public function get_many_by($where)
+    public function get_many_by($where, $include_deleted = false) : array
     {
         $this->db->where($where);
-        return $this->get_all();
+        return $this->get_all($include_deleted);
     }
 
     /**
      * Retrieve all records for a particular model
-    */
-    public function get_all()
+     *
+     * @param bool $include_deleted Include deleted records in the result set (defaults to false)
+     *
+     * @return array<object> An array of objects representing the records in the database
+     */
+    public function get_all($include_deleted = false) : array
     {
+        if (!$include_deleted) {
+            $this->db->where([static::DELETED => null]);
+        }
+
         return $this->db->get($this->table)
                         ->result();
     }
