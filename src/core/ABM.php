@@ -76,7 +76,7 @@ abstract class ABM extends CI_Model
         $result = $this->db->where(static::PRIMARY_KEY, $primary_value)
                            ->update($this->table, $data);
 
-        $this->_run_after_callbacks('update', [$data, $primary_value, $result]);
+        $this->run_after_callbacks('update', [$data, $primary_value, $result]);
 
         return $result;
     }
@@ -90,12 +90,12 @@ abstract class ABM extends CI_Model
     */
     private function insert($data) : int
     {
-        $data = $this->_run_before_callbacks('create', [$data]);
+        $data = $this->run_before_callbacks('create', [$data]);
 
         $this->db->insert($this->table, $data);
         $insert_id = $this->db->insert_id();
 
-        $this->_run_after_callbacks('create', [$data, $insert_id]);
+        $this->run_after_callbacks('create', [$data, $insert_id]);
 
         return $insert_id;
     }
