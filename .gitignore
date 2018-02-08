@@ -2,3 +2,4 @@ vendor/
 src/logs
 src/cache
 .env
+docs

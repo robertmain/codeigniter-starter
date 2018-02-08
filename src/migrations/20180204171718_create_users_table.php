@@ -4,6 +4,9 @@ use Core\Migration;
 
 class Migration_create_users_table extends Migration
 {
+    /**
+     * {@inheritdoc}
+     */
     public function up()
     {
         $this->dbforge->add_field('id');
@@ -30,6 +33,9 @@ class Migration_create_users_table extends Migration
         $this->dbforge->create_table('users', true);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function down()
     {
         $this->dbforge->drop_table('users');

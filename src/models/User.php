@@ -1,10 +1,17 @@
 <?php
 
+
 use Core\ABM;
 
+/**
+ * Abstraction of user related business logic in the application
+ */
 class User extends ABM
 {
-    public function save($data, $id = null) : ?int
+    /**
+     * {@inheritdoc}
+     */
+    public function save($data, $id = null)
     {
         if (array_key_exists('password', $data) && strlen($data['password']) > 0) {
             $data['password'] = self::password_hash($data['password']);

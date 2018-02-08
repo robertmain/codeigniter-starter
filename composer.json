@@ -7,7 +7,8 @@
     ],
     "scripts": {
         "post-install-cmd": "cp .env.example .env",
-        "migrate:latest": "php index.php cli/migrate latest"
+        "migrate:latest": "php index.php cli/migrate latest",
+        "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs"
     },
     "require": {
         "codeigniter/framework": "^3.1",
@@ -18,5 +19,8 @@
         "psr-4": {
             "Core\\": "src\\core"
         }
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "dev-master"
     }
 }

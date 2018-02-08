@@ -32,20 +32,49 @@ abstract class ABM extends CI_Model
     const DELETED = 'deleted_at';
 
     /**
-     * @var string The name of the table data for this model is stored in
+     * @var string The name of the table data for this model is stored in. A protected variable is used to store this
+     *             information instead of a class constant, as this value is computed at call time
      */
     protected $table = null;
 
     /**
-     * @var array<string> Meethods to run at various points during the model's lifecycle
+     * @var \array<string> Lifecycle callback run prior to record creation
      */
     protected $before_create = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run after record creation
+    */
     protected $after_create  = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record update
+    */
     protected $before_update = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record update
+    */
     protected $after_update  = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record retrieval
+    */
     protected $before_get    = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record retrieval
+    */
     protected $after_get     = ['format_record_metadata'];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record deletion
+    */
     protected $before_delete = [];
+
+    /**
+     * @var \array<string> Lifecycle callback run prior to record deletion
+    */
     protected $after_delete  = [];
 
     /**
@@ -174,7 +203,7 @@ abstract class ABM extends CI_Model
      *
      * @return int The primary key of the record that was updated/deleted
     */
-    public function save($data, $id = null) : ?int
+    public function save($data, $id = null)
     {
         $date = new \DateTime();
 
