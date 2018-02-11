@@ -8,7 +8,9 @@
     "scripts": {
         "post-install-cmd": "cp .env.example .env",
         "migrate:latest": "php index.php cli/migrate latest",
-        "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs"
+        "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs",
+        "test:models": "phpunit --testsuite models",
+        "test:controllers": "phpunit --testsuite controllers"
     },
     "require": {
         "codeigniter/framework": "^3.1",
@@ -21,6 +23,9 @@
         }
     },
     "require-dev": {
-        "phpdocumentor/phpdocumentor": "dev-master"
+        "phpdocumentor/phpdocumentor": "dev-master",
+        "phpunit/phpunit": "^7.0",
+        "limedeck/phpunit-detailed-printer": "^3.2",
+        "mockery/mockery": "^1.0"
     }
 }
