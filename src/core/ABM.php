@@ -85,6 +85,8 @@ abstract class ABM extends CI_Model
         parent::__construct();
         $this->load->helper(['inflector']);
 
+        $this->load->database();
+
         if ($this->table === null) {
             $this->table = strtolower(plural(get_class($this)));
         }
