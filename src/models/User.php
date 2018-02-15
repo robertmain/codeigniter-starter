@@ -1,7 +1,8 @@
 <?php
 
+namespace App\Models;
 
-use Core\ABM;
+use App\Core\ABM;
 
 /**
  * Abstraction of user related business logic in the application

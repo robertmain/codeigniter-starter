@@ -1,6 +1,6 @@
 <?php
 
-use Core\ABC;
+use App\Core\ABC;
 
 /**
  * Starter controller to give a basic introduction and example of how controlelrs work in CodeIgniter
