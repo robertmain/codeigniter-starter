@@ -1,6 +1,6 @@
 <?php
 
-use Core\Migration;
+use App\Core\Migration;
 
 class Migration_create_users_table extends Migration
 {
@@ -21,7 +21,12 @@ class Migration_create_users_table extends Migration
                 'constraint' => 255,
                 'null'       => false
             ],
-            'name' => [
+            'forename' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => false
+            ],
+            'surname' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null'       => false
