@@ -2,6 +2,11 @@
 
 A CodeIgniter starter application designed to get up and running and to be able to write code that is as clean, and testable as possible.
 
+## Installation
+
+- With Composer: `composer create-project robertmain/codeigniter-starter --dev`
+- Manually: `git clone https://github.com/robertmain/codeigniter-starter`
+
 ## Why
 
 CodeIgniter applications are currently very difficult to test, since most rely on the huge God object `$this` that everything else (including the class loader ಠ_ಠ) decend from.
