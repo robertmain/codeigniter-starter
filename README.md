@@ -4,9 +4,9 @@ A CodeIgniter starter application designed to get up and running and to be able 
 
 ## Why
 
-CodeIgniter applications are currently very difficult to test (since most rely on the huge God object `$this` that everything else [including the loader ಠ_ಠ] decend from ).
+CodeIgniter applications are currently very difficult to test, since most rely on the huge God object `$this` that everything else (including the class loader ಠ_ಠ) decend from.
 
-This project brings Composer into the mix, both to load third-party libraries from Packaist, and to facilitate the namespacing of models. This in-turn allows us to create abstractions of business objects that are more testable as a single unit of code and are easier to deal with in the application.
+This project brings Composer into the mix, both to load third-party libraries from Packagist, and to facilitate the namespacing of models. This in-turn allows us to create abstractions of business objects that are more testable as a single unit of code and are easier to deal with in the application.
 
 ## What
 
