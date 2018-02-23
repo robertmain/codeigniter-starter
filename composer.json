@@ -8,6 +8,10 @@
     "scripts": {
         "post-install-cmd": "cp .env.example .env",
         "migrate:latest": "php index.php cli/migrate latest",
+        "migrate:flush": [
+            "php index.php cli/migrate drop",
+            "@migrate:latest"
+        ],
         "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs",
         "test:models": "phpunit --testsuite models",
         "test:controllers": "phpunit --testsuite controllers"
