@@ -19,6 +19,9 @@
         "crazycodr/standard-exceptions": "^2.1"
     },
     "autoload": {
+        "classmap": [
+            "vendor/codeigniter/framework/system"
+        ],
         "psr-4": {
             "App\\": "src"
         }
