@@ -13,6 +13,10 @@
             "@migrate:latest"
         ],
         "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs",
+        "test": [
+            "@test:models",
+            "@test:controllers"
+        ],
         "test:models": "phpunit --testsuite models",
         "test:controllers": "phpunit --testsuite controllers"
     },
