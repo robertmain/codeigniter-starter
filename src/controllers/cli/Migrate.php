@@ -4,6 +4,7 @@
  * Migration CLI controller
  *
  * Used for running migrations from the CLI (for example, from a composer script)
+ * @ignore
  */
 class Migrate extends CI_Controller
 {
