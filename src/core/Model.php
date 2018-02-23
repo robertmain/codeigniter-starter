@@ -2,14 +2,14 @@
 
 namespace App\Core;
 
-use \CI_Model;
+use CI_Model;
 
 /**
  * Abstract Base Model
  *
  * Abstract database model. Adds additional functionality such as created/updated/deleted timestamps, etc.
  */
-abstract class ABM extends CI_Model
+abstract class Model extends CI_Model
 {
     /**
      * @var string Table primary key column

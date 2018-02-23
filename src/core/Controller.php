@@ -10,7 +10,7 @@ use League\Plates\Engine;
  * Abstract controller that all application controllers should inherit from in order to benefit from utilities such
  * as pre-configured templating etc.
  */
-abstract class ABC extends \CI_Controller
+abstract class Controller extends \CI_Controller
 {
     public function __construct()
     {
