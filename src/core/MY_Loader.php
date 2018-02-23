@@ -69,7 +69,6 @@ class MY_Loader extends CI_Loader
     private function load_class($path, $class_name)
     {
         if (file_exists($path)) {
-            require_once $path;
             $instance = new $class_name();
             return $instance;
         } else {
