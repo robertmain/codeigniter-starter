@@ -1,11 +1,12 @@
 <?php
 
-use App\Core\ABC;
+use App\Core\Controller;
+use App\Models\User;
 
 /**
  * Starter controller to give a basic introduction and example of how controlelrs work in CodeIgniter
  */
-class Welcome extends ABC
+class Welcome extends Controller
 {
     /**
      * Display the index page

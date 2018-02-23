@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Core\ABM;
+use App\Core\Model;
 
 /**
  * Abstraction of user related business logic in the application
  */
-class User extends ABM
+class User extends Model
 {
     /**
      * {@inheritdoc}
