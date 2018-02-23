@@ -33,7 +33,7 @@ class Migration_create_users_table extends Migration
             ]
         ]);
         $this->dbforge->add_key('username');
-        $this->dbforge->add_field($this->metaData);
+        $this->dbforge->add_field($this->date_stamps);
 
         $this->dbforge->create_table('users', true);
     }

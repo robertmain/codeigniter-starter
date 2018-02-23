@@ -15,7 +15,7 @@ abstract class Migration extends CI_Migration
     /**
      * @var Array Record metadata that can be easily added to any migration
     */
-    protected $metaData = [
+    protected $date_stamps = [
         Model::CREATED => [
             'type' => 'DATETIME',
             'null' => false
