@@ -83,12 +83,14 @@ abstract class Model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+
         $this->load->helper(['inflector']);
 
         $this->load->database();
 
         if ($this->table === null) {
-            $this->table = strtolower(plural(get_class($this)));
+            $className = (new \ReflectionClass($this))->getShortName();
+            $this->table = strtolower(plural($className));
         }
     }
 
