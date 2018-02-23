@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "565f1171a1e73f2ddd66703fb512ae49",
-    "content-hash": "574ebc5de2988efc56c7c171797ea6ab",
+    "hash": "756a1d495b6004860f97109a9e15df28",
+    "content-hash": "d011f8433b293df366c7071076bddbbb",
     "packages": [
         {
             "name": "codeigniter/framework",
@@ -39,6 +39,45 @@
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
             "time": "2018-01-13 11:57:11"
+        },
+        {
+            "name": "crazycodr/standard-exceptions",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazycodr/standard-exceptions.git",
+                "reference": "76b718b09ac7c2e77458ccef531bc273849adf06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazycodr/standard-exceptions/zipball/76b718b09ac7c2e77458ccef531bc273849adf06",
+                "reference": "76b718b09ac7c2e77458ccef531bc273849adf06",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.*",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Exceptions\\": "Exceptions/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu Dumoulin aka crazycodr",
+                    "email": "thecrazycodr@gmail.com",
+                    "homepage": "http://www.crazycoders.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This project is aimed at providing additional standard exceptions to php. Many exceptions that are missing from the SPL are constantly being reproduced in different projects. By providing a package of high-quality, well organised exceptions, it will, in the long run, increase interroperability between projects.",
+            "time": "2017-06-19 13:19:17"
         },
         {
             "name": "league/plates",
