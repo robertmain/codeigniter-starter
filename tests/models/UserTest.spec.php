@@ -39,6 +39,24 @@ class User extends TestCase
         $this->assertTrue($valid);
     }
 
+    /**
+     * @test
+     */
+    public function is_denied_login_if_username_is_incorrect_or_does_not_exist()
+    {
+        $user = (object)[
+            'username' => 'mrtesting',
+            'password' => password_hash('abc', PASSWORD_DEFAULT)
+        ];
+
+        $this->user_model->shouldReceive('get_by')
+                         ->with(['username' => 'dontexist'])
+                         ->andReturn(null);
+
+        $valid = $this->user_model->password_verify('dontexist', 'abc');
+
+        $this->assertFalse($valid);
+    }
     public function tearDown()
     {
         Mockery::close();

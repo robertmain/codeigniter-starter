@@ -34,8 +34,11 @@ class User extends Model
     public function password_verify($username, $password)
     {
         $user = $this->get_by(['username' => $username]);
-
-        return password_verify($password, $user->password);
+        if ($user) {
+            return password_verify($password, $user->password);
+        } else {
+            return false;
+        }
     }
 
     /**
