@@ -1,10 +1,10 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 use App\Models\User as UserModel;
 
-class User extends TestCase
+class User extends MockeryTestCase
 {
 
     /**
