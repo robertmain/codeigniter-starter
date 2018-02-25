@@ -15,6 +15,7 @@
          convertWarningsToExceptions="true"
          stopOnFailiure="false"
          syntaxCheck="false"
+         printerClass="LimeDeck\Testing\Printer"
          verbose="false">
     <testsuite name="models">
         <directory suffix=".spec.php">tests/models</directory>
@@ -28,7 +29,4 @@
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
-    <listeners>
-        <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
-    </listeners>
 </phpunit>
