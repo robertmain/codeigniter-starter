@@ -27,7 +27,7 @@ class User extends Model
      * Ensure a username and password match up to the values in the database
      *
      * @param string $username The username of the user to verify the password for
-     * @param string $password The password to verify
+     * @param string $password The unhashed password supplied by the user in plain text
      *
      * @return bool True for valid, false for invalid
     */
