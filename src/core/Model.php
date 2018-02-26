@@ -102,7 +102,7 @@ abstract class Model extends CI_Model
      *
      * @return boolean Indication of the success of the update
      */
-    private function update($primary_value, $data) : boolean
+    protected function update($primary_value, $data) : \boolean
     {
         $data = $this->run_before_callbacks('update', [$data, $primary_value]);
 
@@ -121,7 +121,7 @@ abstract class Model extends CI_Model
      *
      * @return int The primary key value of the newly created record
     */
-    private function insert($data) : int
+    protected function insert($data) : int
     {
         $data = $this->run_before_callbacks('create', [$data]);
 
