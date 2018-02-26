@@ -12,23 +12,42 @@ use App\Core\Model;
  */
 abstract class Migration extends CI_Migration
 {
+
     /**
-     * @var Array Record metadata that can be easily added to any migration
+     * @var String The field name for the created datestamp
     */
-    protected $date_stamps = [
-        Model::CREATED => [
-            'type' => 'DATETIME',
-            'null' => false
-        ],
-        Model::UPDATED => [
-            'type' => 'DATETIME',
-            'null' => false
-        ],
-        Model::DELETED => [
-            'type' => 'DATETIME',
-            'null' => true
-        ]
-    ];
+    const CREATED = Model::CREATED;
+
+    /**
+     * @var String The field name for the updated datestamp
+    */
+    const UPDATED = Model::UPDATED;
+
+    /**
+     * @var String The field name for the deleted datestamp
+    */
+    const DELETED = Model::DELETED;
+
+    /**
+     * {@inheritdoc}
+    */
+    public function __construct($config = array())
+    {
+        $this->date_stamps = [
+            static::CREATED => [
+                'type' => 'DATETIME',
+                'null' => false
+            ],
+            static::UPDATED => [
+                'type' => 'DATETIME',
+                'null' => false
+            ],
+            static::DELETED => [
+                'type' => 'DATETIME',
+                'null' => true
+            ]
+        ];
+    }
 
     /**
      * Actions required to perform the migration
