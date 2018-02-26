@@ -1,11 +1,11 @@
 <?php
-
-use Mockery\Adapter\Phpunit\MockeryTestCase;
+use PHPUnit\Framework\TestCase;
 
 use App\Models\User as UserModel;
 
-class User extends MockeryTestCase
+class User extends TestCase
 {
+    use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
     /**
      * @var UserModel
@@ -67,6 +67,23 @@ class User extends MockeryTestCase
         $valid = $this->user_model->password_verify('mrtesting', 'def');
 
         $this->assertFalse($valid);
+    }
+
+    /**
+     * @test
+     */
+    public function password_can_be_changed()
+    {
+        $model = Mockery::mock(UserModel::class . '[password_hash,update]')->shouldAllowMockingProtectedMethods();
+
+        $model->shouldReceive('password_hash')
+              ->with('hello')
+              ->andReturn('secure_hash');
+
+        $model->shouldReceive('update')
+              ->with(6, Mockery::subset(['password' => 'secure_hash']));
+
+        $model->save(['password' => 'hello'], 6);
     }
 
     public function tearDown()
