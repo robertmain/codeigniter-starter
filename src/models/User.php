@@ -15,7 +15,7 @@ class User extends Model
     public function save($data, $id = null)
     {
         if (array_key_exists('password', $data) && strlen($data['password']) > 0) {
-            $data['password'] = self::password_hash($data['password']);
+            $data['password'] = $this->password_hash($data['password']);
         } else {
             unset($data['password']);
         }
@@ -42,13 +42,15 @@ class User extends Model
     }
 
     /**
-     * Hash a password using PHP's `password_hash()` function
+     * Hash a password securely for storage in the database
+     * '
+     * @internal
      *
      * @param string $password The password to hash
      *
      * @return string A password hash containing the salt and hashing algorithm used
     */
-    private static function password_hash($password)
+    protected function password_hash($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
