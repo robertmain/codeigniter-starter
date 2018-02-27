@@ -19,7 +19,8 @@ class User extends TestCase
 
     public function setUp()
     {
-        $this->user_model = Mockery::mock(UserModel::class)->makePartial();
+        $this->user_model = Mockery::mock(UserModel::class)->makePartial()
+                                                           ->shouldAllowMockingProtectedMethods();
 
         $this->test_user = (object)[
             'username' => 'mrtesting',
@@ -74,18 +75,16 @@ class User extends TestCase
      */
     public function password_can_be_changed()
     {
-        $model = Mockery::mock(UserModel::class . '[password_hash,update]')->shouldAllowMockingProtectedMethods();
+        $this->user_model->shouldReceive('password_hash')
+                         ->with('hello')
+                         ->andReturn('secure_hash');
 
-        $model->shouldReceive('password_hash')
-              ->with('hello')
-              ->andReturn('secure_hash');
+        $this->user_model->shouldReceive('update')
+                         ->with(6, Mockery::subset(['password' => 'secure_hash']));
 
-        $model->shouldReceive('update')
-              ->with(6, Mockery::subset(['password' => 'secure_hash']));
-
-        $model->save(['password' => 'hello'], 6);
+        $this->user_model->save(['password' => 'hello'], 6);
     }
-
+    
     public function tearDown()
     {
         Mockery::close();
