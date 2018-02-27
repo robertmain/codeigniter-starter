@@ -84,7 +84,28 @@ class User extends TestCase
 
         $this->user_model->save(['password' => 'hello'], 6);
     }
-    
+
+    /**
+     * @test
+    */
+    public function password_remains_unchanged_if_not_suppled()
+    {
+        $this->user_model->shouldNotreceive('password_hash');
+
+        $this->user_model->shouldReceive('update')
+                         ->once()
+                         ->with(6, Mockery::on(function($data) {
+                            return !array_key_exists('password', $data);
+                         }));
+
+        $this->user_model->save(['firstname' => 'bob'], 6);
+    }
+
+    /**
+     * - Password will remain unchanged if less than 0 chars
+     * - Password will be hashed
+     */
+
     public function tearDown()
     {
         Mockery::close();
