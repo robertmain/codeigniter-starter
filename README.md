@@ -17,6 +17,10 @@ This project brings Composer into the mix, both to load third-party libraries fr
 
 This CodeIgniter starter project provides the following:
 
+### Testing
+
+A fully functional PHPUnit/Mockery setup with namespaced models
+
 ### A Base Model
 
 A basic model abstraction providing some limited CRUD functionality and CRUD lifecycle callbacks. This was inspired by [Jamie Rumbelow\'s Base Model](https://github.com/jamierumbelow/codeigniter-base-model) but diverged in order to support soft deletes.
