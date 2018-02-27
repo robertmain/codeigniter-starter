@@ -105,6 +105,20 @@ class User extends TestCase
      * - Password will remain unchanged if less than 0 chars
      * - Password will be hashed
      */
+     * @test
+    */
+    public function password_remains_unchanged_if_zero_chars_long()
+    {
+        $this->user_model->shouldNotreceive('password_hash');
+
+        $this->user_model->shouldReceive('update')
+                         ->once()
+                         ->with(6, Mockery::on(function($data) {
+                            return !array_key_exists('password', $data);
+                         }));
+
+        $this->user_model->save(['password' => ''], 6);
+    }
 
     public function tearDown()
     {
