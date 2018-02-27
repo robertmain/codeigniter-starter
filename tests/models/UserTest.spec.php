@@ -102,12 +102,9 @@ class User extends TestCase
     }
 
     /**
-     * - Password will remain unchanged if less than 0 chars
-     * - Password will be hashed
-     */
      * @test
     */
-    public function password_remains_unchanged_if_zero_chars_long()
+    public function password_remains_unchanged_if_less_than_one_char()
     {
         $this->user_model->shouldNotreceive('password_hash');
 
