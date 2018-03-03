@@ -45,7 +45,7 @@ abstract class Model extends CI_Model
     /**
      * @var \array<string> Lifecycle callback run after record creation
     */
-    protected $after_create  = [];
+    protected $after_create = [];
 
     /**
      * @var \array<string> Lifecycle callback run prior to record update
@@ -55,17 +55,17 @@ abstract class Model extends CI_Model
     /**
      * @var \array<string> Lifecycle callback run prior to record update
     */
-    protected $after_update  = [];
+    protected $after_update = [];
 
     /**
      * @var \array<string> Lifecycle callback run prior to record retrieval
     */
-    protected $before_get    = [];
+    protected $before_get = [];
 
     /**
      * @var \array<string> Lifecycle callback run prior to record retrieval
     */
-    protected $after_get     = ['format_record_metadata'];
+    protected $after_get = ['format_record_metadata'];
 
     /**
      * @var \array<string> Lifecycle callback run prior to record deletion
@@ -75,7 +75,7 @@ abstract class Model extends CI_Model
     /**
      * @var \array<string> Lifecycle callback run prior to record deletion
     */
-    protected $after_delete  = [];
+    protected $after_delete = [];
 
     /**
      * Dynamically set the model's database table name (though, this can be overridden..)
