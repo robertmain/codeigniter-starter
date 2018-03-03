@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use League\Plates\Engine;
+use Exceptions\Http\HttpException;
 
 /**
  * Abstract Base Controller
@@ -15,6 +16,9 @@ abstract class Controller extends \CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        set_exception_handler([self::class, 'handle_http_exception']);
+
         $this->templates = new Engine(VIEWPATH);
 
         $this->templates->addFolder('layouts', VIEWPATH . 'layouts');
@@ -39,6 +43,23 @@ abstract class Controller extends \CI_Controller
             echo $this->templates->render($partial, $template_vars);
         } else {
             return $this->templates->render($partial, $template_vars);
+        }
+    }
+
+    /**
+     * Exception handler to allow the extension of CodeIgniter's exception handling.
+     *
+     * Other exceptions that do not extend {@link HTTPException} will simply be allowed to bubble to the default CodeIgniter
+     * exception handler
+     *
+     * @internal
+     */
+    public static function handle_http_exception($exception)
+    {
+        if (is_subclass_of($exception, HttpException::class)) {
+            show_error($exception->getMessage(), $exception->getCode());
+        } else {
+            _exception_handler($exception);
         }
     }
 }
