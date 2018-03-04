@@ -18,8 +18,8 @@
             "@test:models",
             "@test:controllers"
         ],
-        "test:models": "phpunit --testsuite models",
-        "test:controllers": "phpunit --testsuite controllers"
+        "test:models": "phpunit --testsuite models --coverage-html tests/models/coverage",
+        "test:controllers": "phpunit --testsuite controllers --coverage-html tests/controllers/coverage"
     },
     "require": {
         "codeigniter/framework": "^3.1",
