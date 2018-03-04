@@ -13,7 +13,7 @@
             "php index.php cli/migrate drop",
             "@migrate:latest"
         ],
-        "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs",
+        "docs": "phpdoc -d src/core -d src/controllers -d src/models -t docs && rm -rf docs/phpdoc-cache-*",
         "test": [
             "@test:models",
             "@test:controllers"
