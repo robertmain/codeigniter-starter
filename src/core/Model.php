@@ -199,7 +199,7 @@ abstract class Model extends CI_Model
     }
 
     /**
-     * Saves (or creates) a single record if it doesn't already exist. If the `$id1 parameter is provided, the record
+     * Saves (or creates) a single record if it doesn't already exist. If the `$id` parameter is provided, the record
      * is presumed not to exist and is created. The newly created ID is then returned.
      *
      * @param array $data The data to persist to the database
@@ -288,7 +288,7 @@ abstract class Model extends CI_Model
      * @param array $where           An asociative array containing the WHERE clause to retrieve records by
      * @param bool  $include_deleted Include deleted records in the result set (defaults to false)
      *
-     * @return array<object> An array of objects matching the query
+     * @return \array<stdObject> An array of objects matching the query
     */
     public function get_many_by($where, $include_deleted = false) : array
     {
@@ -301,7 +301,7 @@ abstract class Model extends CI_Model
      *
      * @param bool $include_deleted Include deleted records in the result set (defaults to false)
      *
-     * @return array<object> An array of objects representing the records in the database
+     * @return \array<stdObject> An array of objects representing the records in the database
      */
     public function get_all($include_deleted = false) : array
     {
