@@ -4,5 +4,4 @@ src/cache
 .env
 docs
 .vscode/
-tests/models/coverage
-tests/controllers/coverage
+tests/coverage
