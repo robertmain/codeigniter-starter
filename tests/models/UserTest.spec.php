@@ -88,7 +88,7 @@ class User extends TestCase
     /**
      * @test
     */
-    public function password_remains_unchanged_if_not_suppled()
+    public function password_remains_unchanged_if_not_supplied()
     {
         $this->user_model->shouldNotreceive('password_hash');
 
