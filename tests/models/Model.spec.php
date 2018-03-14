@@ -33,11 +33,17 @@ class Model extends TestCase
         $this->model->insert(['lastname' => 'Smith']);
     }
 
+    /**
+     * @test
+    */
+    public function prevents_invalid_data_from_being_saved_to_existing_records()
+    {
+        $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The firstname field is required');
 
-        $model->insert(['lastname' => 'Smith']);
+        $this->model->update(3, ['lastname' => 'Smith']);
     }
 
 
