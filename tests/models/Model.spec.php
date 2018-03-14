@@ -6,18 +6,31 @@ use Exceptions\Data\ValidationException;
 
 class Model extends TestCase
 {
+
+    /**
+     * @var BaseModel Abstract base model instance
+     */
+    private $model;
+
+
+    public function setUp()
+    {
+        $this->model     = Mockery::mock(BaseModel::class)->makePartial();
+    }
+
     /**
      * @test
      */
     public function prevents_the_insertion_of_invalid_data()
     {
-        $model     = Mockery::mock(BaseModel::class)->makePartial();
-        $model->db = Mockery::mock(CI_DB_query_builder::class);
+        $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
-        $this->set_protected_property($model, 'validation_rules', ['firstname' => 'required']);
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage('The firstname field is required');
 
-        $model->db->shouldNotReceive('insert');
-        $model->db->shouldNotReceive('insert_id');
+        $this->model->insert(['lastname' => 'Smith']);
+    }
+
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The firstname field is required');
