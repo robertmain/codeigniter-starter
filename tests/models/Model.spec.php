@@ -6,6 +6,9 @@ use Exceptions\Data\ValidationException;
 
 class Model extends TestCase
 {
+    /**
+     * @test
+     */
     public function prevents_the_insertion_of_invalid_data()
     {
         $model     = Mockery::mock(BaseModel::class)->makePartial();
