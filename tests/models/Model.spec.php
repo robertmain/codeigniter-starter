@@ -7,6 +7,8 @@ use Exceptions\Data\ValidationException;
 class Model extends TestCase
 {
 
+    use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /**
      * @var BaseModel Abstract base model instance
      */
