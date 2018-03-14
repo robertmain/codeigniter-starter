@@ -178,11 +178,9 @@ abstract class Model extends CI_Model
         $name = 'before_' . $type;
         $data = (isset($params[0])) ? $params[0] : false;
 
-        if (!empty($this->$name))
-        {
-            foreach ($this->$name as $method)
-            {
-                $data += call_user_func_array(array($this, $method), $params);
+        if (!empty($this->$name)) {
+            foreach ($this->$name as $method) {
+                $data += call_user_func_array([$this, $method], $params);
             }
         }
 
@@ -202,11 +200,9 @@ abstract class Model extends CI_Model
         $name = 'after_' . $type;
         $data = (isset($params[0])) ? $params[0] : false;
 
-        if (!empty($this->$name))
-        {
-            foreach ($this->$name as $method)
-            {
-                $data = call_user_func_array(array($this, $method), $params);
+        if (!empty($this->$name)) {
+            foreach ($this->$name as $method) {
+                $data = call_user_func_array([$this, $method], $params);
             }
         }
 
