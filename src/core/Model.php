@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use CI_Model;
+use Exceptions\Data\ValidationException;
 
 /**
  * Abstract Base Model
@@ -78,6 +79,11 @@ abstract class Model extends CI_Model
     protected $after_delete = [];
 
     /**
+     * @var \array<mixed> An array of validation rules to be provided to the CodeIgniter form validation library
+     */
+    protected $validation_rules = [];
+
+    /**
      * Dynamically set the model's database table name (though, this can be overridden..)
      */
     public function __construct()
@@ -92,6 +98,26 @@ abstract class Model extends CI_Model
             $className = (new \ReflectionClass($this))->getShortName();
             $this->table = strtolower(plural($className));
         }
+    }
+
+    /**
+     * Validate a set of data against the rules specified in each concrete model
+     *
+     * @param mixed $model_data The model data to validate against the rules specified in each model
+     *
+     * @return boolean
+    */
+    private function validate($model_data)
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->validation_data = $model_data;
+
+        foreach ($this->validation_rules as $field => $rules) {
+            $this->form_validation->set_rules($field, $field, $rules);
+        }
+
+        return $this->form_validation->run();
     }
 
     /**
@@ -120,10 +146,16 @@ abstract class Model extends CI_Model
      * @param array $data An ascociative array of data to insert into the database
      *
      * @return int The primary key value of the newly created record
+     *
+     * @throws ValidationException Thrown if the model data provided does not pass the validation rules provided in the model
     */
     protected function insert($data) : int
     {
         $data = $this->run_before_callbacks('create', [$data]);
+
+        if (!$this->validate($data)) {
+            throw new ValidationException($this->form_validation->error_string(null, null));
+        }
 
         $this->db->insert($this->table, $data);
         $insert_id = $this->db->insert_id();
