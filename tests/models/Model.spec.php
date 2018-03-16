@@ -21,7 +21,7 @@ class Model extends TestCase
             'validation_rules',
             [
                 'firstname' => 'required',
-                'age'       => 'required|greater_than_equal_to[18]'
+                'age'       => 'required|is_numeric|greater_than_equal_to[18]'
             ]
         );
 
