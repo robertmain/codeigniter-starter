@@ -24,7 +24,7 @@ class Model extends TestCase
     /**
      * @test
      */
-    public function data_cannot_be_created_if_validation_fails()
+    public function validation_prevents_insertion_of_invalid_data()
     {
         $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
@@ -37,7 +37,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function data_cannot_be_updated_if_validation_fails()
+    public function validation_prevents_update_with_invalid_data()
     {
         $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
@@ -50,7 +50,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function data_can_be_updated()
+    public function data_can_be_updated_if_valid()
     {
         $user_data = ['lastname' => 'Smith'];
 
@@ -68,7 +68,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function data_can_be_inserted()
+    public function data_can_be_inserted_if_valid()
     {
         $user_data = [
             'firstname' => 'Samuel',
