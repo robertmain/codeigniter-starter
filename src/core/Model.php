@@ -159,8 +159,10 @@ abstract class Model extends CI_Model
     {
         $data = $this->run_before_callbacks('create', [$data]);
 
-        if (!$this->validate($data)) {
-            throw new ValidationException($this->form_validation->error_string(null, null));
+        if(count($this->validation_rules) > 0){
+            if (!$this->validate($data)) {
+                throw new ValidationException($this->form_validation->error_string(null, null));
+            }
         }
 
         $this->db->insert($this->table, $data);
