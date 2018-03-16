@@ -128,7 +128,7 @@ abstract class Model extends CI_Model
      *
      * @return boolean Indication of the success of the update
      */
-    protected function update($primary_value, $data) : \boolean
+    protected function update($primary_value, $data) : bool
     {
         $data = $this->run_before_callbacks('update', [$data, $primary_value]);
 
