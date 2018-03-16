@@ -18,6 +18,7 @@ class Model extends TestCase
     public function setUp()
     {
         $this->model     = Mockery::mock(BaseModel::class)->makePartial();
+        $this->model->db = Mockery::mock(CI_DB_query_builder::class);
     }
 
     /**
@@ -42,6 +43,23 @@ class Model extends TestCase
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The firstname field is required');
+
+        $this->model->update(3, ['lastname' => 'Smith']);
+    }
+
+    /**
+     * @test
+    */
+    public function data_can_be_updated()
+    {
+
+        $this->model->db->shouldReceive('where')
+                        ->with(BaseModel::PRIMARY_KEY, 3)
+                        ->andReturn($this->model->db);
+
+        $this->model->db->shouldReceive('update')
+                        ->with(null, ['lastname' => 'Smith'])
+                        ->andReturn(true);
 
         $this->model->update(3, ['lastname' => 'Smith']);
     }
