@@ -52,16 +52,40 @@ class Model extends TestCase
     */
     public function data_can_be_updated()
     {
+        $user_data = ['lastname' => 'Smith'];
 
         $this->model->db->shouldReceive('where')
                         ->with(BaseModel::PRIMARY_KEY, 3)
                         ->andReturn($this->model->db);
 
         $this->model->db->shouldReceive('update')
-                        ->with(null, ['lastname' => 'Smith'])
+                        ->with(null, $user_data)
                         ->andReturn(true);
 
-        $this->model->update(3, ['lastname' => 'Smith']);
+        $this->model->update(3, $user_data);
+    }
+
+    /**
+     * @test
+    */
+    public function data_can_be_inserted()
+    {
+        $user_data = [
+            'firstname' => 'Samuel',
+            'latname'   => 'Smith',
+            'age'       => 29
+        ];
+
+        $this->model->db->shouldReceive('insert')
+                        ->with(null, $user_data);
+
+        $this->model->db->shouldReceive('insert_id')
+                        ->andReturn(8);
+
+        $new_record_id = $this->model->insert($user_data);
+
+        $this->assertInternalType('integer', $new_record_id);
+        $this->assertEquals(8, $new_record_id);
     }
 
 
