@@ -43,7 +43,7 @@ class Model extends TestCase
             $model,
             'validation_rules',
             [
-                'age' => 'required'
+                'age' => 'is_numeric'
             ]
         );
 
