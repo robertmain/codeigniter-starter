@@ -10,23 +10,14 @@ class Model extends TestCase
     use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
     /**
-     * @var BaseModel Abstract base model instance
-     */
-    private $model;
-
-
-    public function setUp()
-    {
-        $this->model     = Mockery::mock(BaseModel::class)->makePartial();
-        $this->model->db = Mockery::mock(CI_DB_query_builder::class);
-    }
-    /**
      * @test
      */
     public function validation_prevents_insertion_of_invalid_data()
     {
+        $model = Mockery::mock(BaseModel::class)->makePartial();
+
         $this->set_protected_property(
-            $this->model,
+            $model,
             'validation_rules',
             [
                 'firstname' => 'required',
@@ -38,7 +29,7 @@ class Model extends TestCase
         $this->expectExceptionMessage('The firstname field is required');
         $this->expectExceptionMessage('The age field must contain a number greater than or equal to 18.');
 
-        $this->model->insert(['lastname' => 'Smith', 'age' => 12]);
+        $model->insert(['lastname' => 'Smith', 'age' => 12]);
     }
 
     /**
@@ -46,18 +37,20 @@ class Model extends TestCase
     */
     public function validation_prevents_update_with_invalid_data()
     {
+        $model = Mockery::mock(BaseModel::class)->makePartial();
+
         $this->set_protected_property(
-            $this->model,
+            $model,
             'validation_rules',
             [
-                'age' => 'is_numeric'
+                'age' => 'required'
             ]
         );
 
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The age field is required');
 
-        $this->model->update(3, ['lastname' => 'Smith', 'age' => 'twelve']);
+        $model->update(3, ['lastname' => 'Smith', 'age' => 'twelve']);
     }
 
     /**
