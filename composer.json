@@ -32,7 +32,11 @@
             "vendor/codeigniter/framework/system"
         ],
         "psr-4": {
-            "App\\": "src"
+            "App\\": "src",
+            "App\\Controllers\\": "src/controllers",
+            "App\\Models\\": "src/models",
+            "App\\Core\\": "src/core",
+            "App\\Migrations\\": "src/migrations"
         }
     },
     "require-dev": {
