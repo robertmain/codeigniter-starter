@@ -80,7 +80,8 @@ class User extends TestCase
                          ->andReturn('secure_hash');
 
         $this->user_model->shouldReceive('update')
-                         ->with(6, Mockery::subset(['password' => 'secure_hash']));
+                         ->with(6, Mockery::subset(['password' => 'secure_hash']))
+                         ->andReturn(true);
 
         $this->user_model->save(['password' => 'hello'], 6);
     }
