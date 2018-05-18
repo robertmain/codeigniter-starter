@@ -5,5 +5,5 @@ php:
   - hhvm
 install:
   - composer install
-test:
+script:
   - composer run-script test
