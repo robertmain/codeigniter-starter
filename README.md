@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/robertmain/codeigniter-starter.svg?branch=master)](https://travis-ci.org/robertmain/codeigniter-starter)
+
 # CodeIgniter Starter
 
 A CodeIgniter starter application designed to get up and running and to be able to write code that is as clean, and testable as possible.
