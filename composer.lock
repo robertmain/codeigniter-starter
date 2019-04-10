@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "bd65f797a11ed3bc23f73f8816da1f17",
@@ -41,26 +41,27 @@
         },
         {
             "name": "crazycodr/standard-exceptions",
-            "version": "2.1.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazycodr/standard-exceptions.git",
-                "reference": "76b718b09ac7c2e77458ccef531bc273849adf06"
+                "reference": "e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazycodr/standard-exceptions/zipball/76b718b09ac7c2e77458ccef531bc273849adf06",
-                "reference": "76b718b09ac7c2e77458ccef531bc273849adf06",
+                "url": "https://api.github.com/repos/crazycodr/standard-exceptions/zipball/e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7",
+                "reference": "e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7",
                 "shasum": ""
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "1.*",
-                "phpunit/phpunit": "5.*"
+                "friendsofphp/php-cs-fixer": "^2.11",
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Exceptions\\": "Exceptions/"
+                    "Exceptions\\": "Exceptions/",
+                    "Exceptions\\Helpers\\": "Helpers/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -69,14 +70,13 @@
             ],
             "authors": [
                 {
-                    "name": "Mathieu Dumoulin aka crazycodr",
+                    "name": "Mathieu Dumoulin",
                     "email": "thecrazycodr@gmail.com",
-                    "homepage": "http://www.crazycoders.net/",
                     "role": "Developer"
                 }
             ],
-            "description": "This project is aimed at providing additional standard exceptions to php. Many exceptions that are missing from the SPL are constantly being reproduced in different projects. By providing a package of high-quality, well organised exceptions, it will, in the long run, increase interroperability between projects.",
-            "time": "2017-06-19T13:19:17+00:00"
+            "description": "This project is aimed at providing additional standard exceptions to php. Many exceptions that are missing from the SPL are constantly being reproduced in different projects. By providing a package of high-quality, well organised exceptions, it will, in the long run, increase interoperability between projects.",
+            "time": "2018-08-16T12:57:52+00:00"
         },
         {
             "name": "league/plates",
@@ -1200,7 +1200,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -1454,12 +1454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc"
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/394d2e383448b046fc6c38e4c1d275bea40ae9cc",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
                 "shasum": ""
             },
             "require": {
@@ -1536,7 +1536,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2017-12-24T17:56:55+00:00"
+            "time": "2018-04-20T14:43:14+00:00"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -2137,6 +2137,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-02-15T05:27:38+00:00"
         },
         {
