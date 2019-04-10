@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "bd65f797a11ed3bc23f73f8816da1f17",
@@ -862,16 +862,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "1bac8c362b12f522fdd1f1fa3556284c91affa38"
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/1bac8c362b12f522fdd1f1fa3556284c91affa38",
-                "reference": "1bac8c362b12f522fdd1f1fa3556284c91affa38",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
                 "shasum": ""
             },
             "require": {
@@ -880,7 +880,7 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7|~6.1"
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
             },
             "type": "library",
             "extra": {
@@ -909,8 +909,8 @@
                     "homepage": "http://davedevelopment.co.uk"
                 }
             ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-            "homepage": "http://github.com/mockery/mockery",
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
             "keywords": [
                 "BDD",
                 "TDD",
@@ -923,7 +923,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-10-06T16:20:43+00:00"
+            "time": "2019-02-13T09:37:52+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1200,7 +1200,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -1454,12 +1454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc"
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/394d2e383448b046fc6c38e4c1d275bea40ae9cc",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
                 "shasum": ""
             },
             "require": {
@@ -1536,7 +1536,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2017-12-24T17:56:55+00:00"
+            "time": "2018-04-20T14:43:14+00:00"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -2137,6 +2137,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-02-15T05:27:38+00:00"
         },
         {
