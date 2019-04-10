@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "bd65f797a11ed3bc23f73f8816da1f17",
     "packages": [
         {
             "name": "codeigniter/framework",
-            "version": "3.1.7",
+            "version": "3.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "02a0518e1c56ba3506f370362ac5ebdb8a138312"
+                "reference": "c576995304fc3609cca0b7b92d1b2cd611ec82f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/02a0518e1c56ba3506f370362ac5ebdb8a138312",
-                "reference": "02a0518e1c56ba3506f370362ac5ebdb8a138312",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/c576995304fc3609cca0b7b92d1b2cd611ec82f5",
+                "reference": "c576995304fc3609cca0b7b92d1b2cd611ec82f5",
                 "shasum": ""
             },
             "require": {
@@ -37,7 +37,7 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "time": "2018-01-13T11:57:11+00:00"
+            "time": "2019-01-16T15:49:35+00:00"
         },
         {
             "name": "crazycodr/standard-exceptions",
@@ -1200,7 +1200,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -1454,12 +1454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc"
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/394d2e383448b046fc6c38e4c1d275bea40ae9cc",
-                "reference": "394d2e383448b046fc6c38e4c1d275bea40ae9cc",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
+                "reference": "1cf525c384a71c0d8cc7f414b8ba3eb78168e9f4",
                 "shasum": ""
             },
             "require": {
@@ -1536,7 +1536,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2017-12-24T17:56:55+00:00"
+            "time": "2018-04-20T14:43:14+00:00"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -2137,6 +2137,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-02-15T05:27:38+00:00"
         },
         {
