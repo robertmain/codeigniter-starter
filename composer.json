@@ -41,7 +41,7 @@
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "dev-master",
-        "phpunit/phpunit": "^7.0",
+        "phpunit/phpunit": "^8.1",
         "limedeck/phpunit-detailed-printer": "^4.0",
         "mockery/mockery": "^1.0"
     }
