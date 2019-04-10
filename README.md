@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/robertmain/codeigniter-starter.svg?branch=master)](https://travis-ci.org/robertmain/codeigniter-starter)
+
 # CodeIgniter Starter
 
 [![Build Status](https://travis-ci.org/robertmain/codeigniter-starter.svg?branch=master)](https://travis-ci.org/robertmain/codeigniter-starter)
