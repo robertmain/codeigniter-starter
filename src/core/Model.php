@@ -207,7 +207,7 @@ abstract class Model extends CI_Model
      *
      * @return int The primary key of the record that was updated/deleted
     */
-    public function save($data, $id = null)
+    public function save($data, $id = null) : ?int
     {
         $date = new \DateTime();
 

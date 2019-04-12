@@ -11,7 +11,7 @@ class Welcome extends Controller
     /**
      * Display the index page
      */
-    public function index()
+    public function index() : void
     {
         $name = $this->input->get('name');
         $this->render('partials::welcome', ['name' => ($name) ? $name : 'Peter']);

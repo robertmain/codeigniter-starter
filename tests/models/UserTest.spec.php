@@ -17,7 +17,7 @@ class User extends TestCase
      */
     private $test_user;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->user_model = Mockery::mock(UserModel::class)->makePartial()
                                                            ->shouldAllowMockingProtectedMethods();
@@ -31,7 +31,7 @@ class User extends TestCase
     /**
      * @test
     */
-    public function is_granted_login_with_a_valid_username_and_password()
+    public function is_granted_login_with_a_valid_username_and_password() : void
     {
         $this->user_model->shouldReceive('get_by')
                          ->with(['username' => 'mrtesting'])
@@ -45,7 +45,7 @@ class User extends TestCase
     /**
      * @test
      */
-    public function is_denied_login_if_username_is_incorrect_or_does_not_exist()
+    public function is_denied_login_if_username_is_incorrect_or_does_not_exist() : void
     {
         $this->user_model->shouldReceive('get_by')
                          ->with(['username' => 'dontexist'])
@@ -59,7 +59,7 @@ class User extends TestCase
     /**
      * @test
      */
-    public function is_denied_login_if_password_is_incorrect()
+    public function is_denied_login_if_password_is_incorrect() : void
     {
         $this->user_model->shouldReceive('get_by')
                          ->with(['username' => 'mrtesting'])
@@ -73,7 +73,7 @@ class User extends TestCase
     /**
      * @test
      */
-    public function password_can_be_changed()
+    public function password_can_be_changed() : void
     {
         $this->user_model->shouldReceive('password_hash')
                          ->with('hello')
@@ -88,7 +88,7 @@ class User extends TestCase
     /**
      * @test
     */
-    public function password_remains_unchanged_if_not_suppled()
+    public function password_remains_unchanged_if_not_suppled() : void
     {
         $this->user_model->shouldNotreceive('password_hash');
 
@@ -104,7 +104,7 @@ class User extends TestCase
     /**
      * @test
     */
-    public function password_remains_unchanged_if_less_than_one_char()
+    public function password_remains_unchanged_if_less_than_one_char() : void
     {
         $this->user_model->shouldNotreceive('password_hash');
 
@@ -117,7 +117,7 @@ class User extends TestCase
         $this->user_model->save(['password' => ''], 6);
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         Mockery::close();
     }

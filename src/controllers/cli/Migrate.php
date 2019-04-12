@@ -23,7 +23,7 @@ class Migrate extends CI_Controller
     /**
      * Migrate the database to the latest version
     */
-    public function latest()
+    public function latest() : void
     {
         $this->migration->latest();
     }
@@ -33,7 +33,7 @@ class Migrate extends CI_Controller
      *
      * This method will not allow itself to be run if it detects that it is in a production environment
     */
-    public function drop()
+    public function drop() : void
     {
         if (ENVIRONMENT === 'production') {
             throw new InvalidOperationException('Can\'t drop the database in production');
