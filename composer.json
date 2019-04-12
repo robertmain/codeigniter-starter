@@ -24,7 +24,7 @@
     "require": {
         "codeigniter/framework": "^3.1",
         "league/plates": "^3.3",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^3.3",
         "crazycodr/standard-exceptions": "^2.1"
     },
     "autoload": {
