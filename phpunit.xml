@@ -8,21 +8,20 @@
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
-         checkForUnintentionallyCoveredCode="true"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         stopOnFailiure="false"
-         syntaxCheck="false"
          printerClass="LimeDeck\Testing\Printer"
          verbose="false">
-    <testsuite name="models">
-        <directory suffix=".spec.php">tests/models</directory>
-    </testsuite>
-    <testsuite name="controllers">
-        <directory suffix=".spec.php">tests/controllers</directory>
-    </testsuite>
+    <testsuites>
+        <testsuite name="models">
+            <directory suffix=".spec.php">tests/models</directory>
+        </testsuite>
+        <testsuite name="controllers">
+            <directory suffix=".spec.php">tests/controllers</directory>
+        </testsuite>
+    </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>

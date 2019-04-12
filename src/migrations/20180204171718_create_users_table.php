@@ -7,7 +7,7 @@ class Migration_create_users_table extends Migration
     /**
      * {@inheritdoc}
      */
-    public function up()
+    public function up() : void
     {
         $this->dbforge->add_field('id');
         $this->dbforge->add_field([
@@ -41,7 +41,7 @@ class Migration_create_users_table extends Migration
     /**
      * {@inheritdoc}
      */
-    public function down()
+    public function down() : void
     {
         $this->dbforge->drop_table('users');
     }

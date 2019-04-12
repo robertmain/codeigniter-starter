@@ -5,3 +5,4 @@ src/cache
 docs
 .vscode/
 tests/coverage
+.phpunit.result.cache
