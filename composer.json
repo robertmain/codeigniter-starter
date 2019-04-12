@@ -19,7 +19,12 @@
             "@test:controllers"
         ],
         "test:models": "phpunit --testsuite models --coverage-html tests/coverage",
-        "test:controllers": "phpunit --testsuite controllers --coverage-html tests/coverage"
+        "test:controllers": "phpunit --testsuite controllers --coverage-html tests/coverage",
+        "build": [
+            "composer install --no-dev --quiet",
+            "composer archive --format=zip --file app",
+            "composer install --quiet"
+        ]
     },
     "require": {
         "php": ">=7.2",
@@ -45,5 +50,15 @@
         "phpunit/phpunit": "^8.1",
         "limedeck/phpunit-detailed-printer": "^5.0",
         "mockery/mockery": "^1.0"
+    },
+    "archive": {
+        "exclude": [
+            "*.*",
+            "!.env",
+            "!.htaccess",
+            "!index.php",
+            "!src/",
+            "!vendor/"
+        ]
     }
 }
