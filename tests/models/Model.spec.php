@@ -15,7 +15,7 @@ class Model extends TestCase
     private $model;
 
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->model     = Mockery::mock(BaseModel::class)->makePartial();
         $this->model->db = Mockery::mock(CI_DB_query_builder::class);
@@ -24,7 +24,7 @@ class Model extends TestCase
     /**
      * @test
      */
-    public function validation_prevents_insertion_of_invalid_data()
+    public function validation_prevents_insertion_of_invalid_data() : void
     {
         $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
@@ -37,7 +37,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function validation_prevents_update_with_invalid_data()
+    public function validation_prevents_update_with_invalid_data() : void
     {
         $this->set_protected_property($this->model, 'validation_rules', ['firstname' => 'required']);
 
@@ -50,7 +50,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function data_can_be_updated_if_valid()
+    public function data_can_be_updated_if_valid() : void
     {
         $user_data = ['lastname' => 'Smith'];
 
@@ -68,7 +68,7 @@ class Model extends TestCase
     /**
      * @test
     */
-    public function data_can_be_inserted_if_valid()
+    public function data_can_be_inserted_if_valid() : void
     {
         $user_data = [
             'firstname' => 'Samuel',
@@ -84,7 +84,7 @@ class Model extends TestCase
 
         $new_record_id = $this->model->insert($user_data);
 
-        $this->assertInternalType('integer', $new_record_id);
+        $this->assertIsInt($new_record_id);
         $this->assertEquals(8, $new_record_id);
     }
 
