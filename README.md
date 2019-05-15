@@ -1,6 +1,6 @@
 # CodeIgniter Starter
 
-[![Build Status](https://travis-ci.org/robertmain/codeigniter-starter.svg?branch=master)](https://travis-ci.org/robertmain/codeigniter-starter)
+[![Build Status](https://travis-ci.org/robertmain/codeigniter-starter.svg?branch=master)](https://travis-ci.org/robertmain/codeigniter-starter) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=robertmain/codeigniter-starter)](https://dependabot.com)
 
 A CodeIgniter starter application designed to get up and running and to be able to write code that is as clean, and testable as possible.
 
