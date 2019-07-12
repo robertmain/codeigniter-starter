@@ -41,16 +41,16 @@
         },
         {
             "name": "crazycodr/standard-exceptions",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazycodr/standard-exceptions.git",
-                "reference": "e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7"
+                "reference": "1bc8ce10663d6aa63dd4d63206d8de006635a9cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazycodr/standard-exceptions/zipball/e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7",
-                "reference": "e1c0dd5cfe85a3f7bfc23bf7e8917bbe43c97ca7",
+                "url": "https://api.github.com/repos/crazycodr/standard-exceptions/zipball/1bc8ce10663d6aa63dd4d63206d8de006635a9cd",
+                "reference": "1bc8ce10663d6aa63dd4d63206d8de006635a9cd",
                 "shasum": ""
             },
             "require-dev": {
@@ -76,7 +76,7 @@
                 }
             ],
             "description": "This project is aimed at providing additional standard exceptions to php. Many exceptions that are missing from the SPL are constantly being reproduced in different projects. By providing a package of high-quality, well organised exceptions, it will, in the long run, increase interoperability between projects.",
-            "time": "2018-08-16T12:57:52+00:00"
+            "time": "2019-07-11T16:20:04+00:00"
         },
         {
             "name": "league/plates",
