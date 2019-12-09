@@ -30,7 +30,7 @@
         "php": ">=7.2",
         "codeigniter/framework": "^3.1",
         "league/plates": "^3.3",
-        "vlucas/phpdotenv": "^3.3",
+        "vlucas/phpdotenv": "^4.0",
         "crazycodr/standard-exceptions": "^2.1"
     },
     "autoload": {
