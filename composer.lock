@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6cf3b9dc1ed0bd048ab442804257dae",
+    "content-hash": "dd2beef227fff7cc15a2f2fb740445c3",
     "packages": [
         {
             "name": "codeigniter/framework",
@@ -989,21 +989,21 @@
         },
         {
             "name": "limedeck/phpunit-detailed-printer",
-            "version": "5.0.0",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LimeDeck/phpunit-detailed-printer.git",
-                "reference": "ae5ab59ae406c306b02a7cb8ec95dc99d5e6314c"
+                "reference": "29d3759bfc913b5b48a7c34445f484fd9d4ae543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LimeDeck/phpunit-detailed-printer/zipball/ae5ab59ae406c306b02a7cb8ec95dc99d5e6314c",
-                "reference": "ae5ab59ae406c306b02a7cb8ec95dc99d5e6314c",
+                "url": "https://api.github.com/repos/LimeDeck/phpunit-detailed-printer/zipball/29d3759bfc913b5b48a7c34445f484fd9d4ae543",
+                "reference": "29d3759bfc913b5b48a7c34445f484fd9d4ae543",
                 "shasum": ""
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.14",
-                "phpunit/phpunit": "~8.0"
+                "phpunit/phpunit": "~9.0"
             },
             "type": "library",
             "autoload": {
@@ -1022,7 +1022,11 @@
                 }
             ],
             "description": "Formatter for the detailed output of PHPUnit tests.",
-            "time": "2019-03-08T19:56:41+00:00"
+            "support": {
+                "issues": "https://github.com/LimeDeck/phpunit-detailed-printer/issues",
+                "source": "https://github.com/LimeDeck/phpunit-detailed-printer/tree/6.0.0"
+            },
+            "time": "2020-08-10T20:16:49+00:00"
         },
         {
             "name": "mockery/mockery",
